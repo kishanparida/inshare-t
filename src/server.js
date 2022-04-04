@@ -3,12 +3,12 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const path = require('path');
-// const cors = require('cors');
-// // Cors
-// const corsOptions = {
-//   origin: process.env.ALLOWED_CLIENTS.split(',')
-//   // ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:3300']
-// }
+const cors = require('cors');
+// Cors
+const corsOptions = {
+  origin: process.env.ALLOWED_CLIENTS.split(',')
+  // ['http://localhost:3000', 'http://localhost:5000', 'http://localhost:3300']
+}
 //
 // // Default configuration looks like
 // // {
@@ -18,7 +18,7 @@ const path = require('path');
 // //     "optionsSuccessStatus": 204
 // //   }
 //
-// app.use(cors(corsOptions))
+app.use(cors(corsOptions))
 const static_path=path.join(__dirname,"../public");
 const template_path=path.join(__dirname,"../views");
 app.use(express.static('public'));
